@@ -2,53 +2,183 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>Privacy Policy — Text Eraser for Photos</title>
+  <meta name="description" content="Privacy Policy for Text Eraser for Photos by Rohan Manocha."/>
+  <link rel="canonical" href="privacy-policy.html"/>
   <style>
-    body { font-family: Arial, sans-serif; padding: 2rem; line-height: 1.6; max-width: 800px; margin: auto; }
-    h1,h2 { color:#333; }
+    :root{
+      --fg:#1b1b1f; --muted:#555; --bg:#fff; --card:#f8f9fb; --border:#e6e8f0; --link:#175fe6;
+      --radius:14px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; background:var(--bg); color:var(--fg);
+      font:16px/1.65 system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      padding:32px 18px;
+    }
+    .wrap{max-width:900px; margin:auto}
+    header{
+      display:flex; gap:16px; align-items:center; margin-bottom:24px;
+    }
+    header .brand{
+      font-weight:700; letter-spacing:.2px; color:var(--fg);
+    }
+    nav a{color:var(--link); text-decoration:none; margin-right:16px}
+    nav a:hover{text-decoration:underline}
+    h1{font-size:28px; line-height:1.25; margin:6px 0 10px}
+    .meta{color:var(--muted); font-size:14px}
+    .card{
+      background:var(--card); border:1px solid var(--border); border-radius:var(--radius);
+      padding:24px; margin:18px 0 28px;
+    }
+    h2{margin-top:28px; font-size:22px}
+    h3{margin-top:20px; font-size:18px}
+    ul{padding-left:20px}
+    a{color:var(--link)}
+    footer{
+      margin-top:36px; padding-top:18px; border-top:1px solid var(--border); color:var(--muted); font-size:14px;
+    }
+    .toc{padding:14px 16px; background:#fff; border:1px solid var(--border); border-radius:var(--radius)}
+    .toc ul{margin:0; columns:2; gap:24px}
+    @media (max-width:640px){ .toc ul{columns:1} }
+    @media print{ nav, .toc{display:none} body{padding:0} .card{border:none; background:#fff} }
   </style>
 </head>
 <body>
-  <h1>Privacy Policy — Text Eraser for Photos</h1>
-  <p><strong>Last updated:</strong> October 6, 2025</p>
-  <p><strong>Developer:</strong> Rohan Manocha</p>
-  <p><strong>Contact:</strong> <a href="mailto:nyoargames@gmail.com">nyoargames@gmail.com</a></p>
+  <div class="wrap">
+    <header>
+      <div class="brand">NyoarGames</div>
+      <nav aria-label="Top">
+        <a href="index.html">Support</a>
+        <a href="terms-of-use.html">Terms of Use</a>
+      </nav>
+    </header>
 
-  <h2>1. Introduction</h2>
-  <p>Text Eraser for Photos (“the App”) processes photos <strong>locally on your device</strong>. Images are not uploaded to external servers.</p>
+    <article>
+      <h1>Privacy Policy — Text Eraser for Photos</h1>
+      <div class="meta">Effective date: <time datetime="2025-10-06">October 6, 2025</time> · Developer: Rohan Manocha · Contact: <a href="mailto:nyoargames@gmail.com">nyoargames@gmail.com</a></div>
 
-  <h2>2. Information We Do Not Collect</h2>
-  <ul>
-    <li>No collection, storage, or transmission of your photos or personal content.</li>
-    <li>No analytics, advertising SDKs, or third-party tracking.</li>
-  </ul>
+      <div class="card toc" role="navigation" aria-label="Table of contents">
+        <strong>Contents</strong>
+        <ul>
+          <li><a href="#overview">1. Overview</a></li>
+          <li><a href="#scope">2. Scope</a></li>
+          <li><a href="#no-collection">3. Information We Do Not Collect</a></li>
+          <li><a href="#on-device">4. On-Device Processing</a></li>
+          <li><a href="#permissions">5. Permissions We Request</a></li>
+          <li><a href="#purchases">6. Purchases & Subscriptions</a></li>
+          <li><a href="#children">7. Children’s Privacy</a></li>
+          <li><a href="#choices">8. Your Choices & Controls</a></li>
+          <li><a href="#security">9. Security</a></li>
+          <li><a href="#retention">10. Retention</a></li>
+          <li><a href="#transfers">11. International Transfers</a></li>
+          <li><a href="#changes">12. Changes to this Policy</a></li>
+          <li><a href="#contact">13. Contact</a></li>
+          <li><a href="#definitions">14. Key Definitions</a></li>
+          <li><a href="#law">15. Governing Law</a></li>
+        </ul>
+      </div>
 
-  <h2>3. Permissions</h2>
-  <p>The App requests access to your <strong>Photo Library</strong> to import and save edited images and uses the system share sheet when you choose to share.</p>
+      <section id="overview">
+        <h2>1. Overview</h2>
+        <p><strong>Text Eraser for Photos</strong> (the “App”) is developed by <strong>Rohan Manocha</strong> (“we”, “us”, or “our”). We respect your privacy and designed the App so that your photos and edits remain <strong>on your device</strong>. We do not operate servers for this App and do not receive your images or edits.</p>
+      </section>
 
-  <h2>4. On-Device Processing</h2>
-  <p>All detection, erasing, and editing happen on your device using Apple frameworks.</p>
+      <section id="scope">
+        <h2>2. Scope</h2>
+        <p>This Policy explains how the App accesses and handles information when you use it on iOS/iPadOS. It also covers limited information you may voluntarily provide when you contact us for support.</p>
+      </section>
 
-  <h2>5. Purchases & Subscriptions</h2>
-  <p>Payments are processed by Apple. Plans: Free (5 photos), Weekly $3.99, Monthly $7.99, Yearly $29.99.</p>
+      <section id="no-collection">
+        <h2>3. Information We Do Not Collect</h2>
+        <ul>
+          <li><strong>No photos or edits collected:</strong> We do not collect, store, or transmit your images, detected text, or edits.</li>
+          <li><strong>No analytics or ads:</strong> The App does not include analytics SDKs, advertising SDKs, or tracking technologies.</li>
+          <li><strong>No account data:</strong> The App does not require you to create an account or share personal details to use core features.</li>
+        </ul>
+      </section>
 
-  <h2>6. Children’s Privacy</h2>
-  <p>No data is knowingly collected from children under 13.</p>
+      <section id="on-device">
+        <h2>4. On-Device Processing</h2>
+        <p>All detection, erasing, and rendering occur locally using Apple frameworks (e.g., Vision, Core Image). Except when you explicitly use the iOS share sheet, your content does not leave your device.</p>
+      </section>
 
-  <h2>7. Data Security</h2>
-  <p>Your content stays on your device; we do not transmit it to servers we control.</p>
+      <section id="permissions">
+        <h2>5. Permissions We Request</h2>
+        <ul>
+          <li><strong>Photos</strong> — To import images for editing and to save your results back to your library. You can change access in <em>Settings &gt; Privacy &amp; Security &gt; Photos</em>.</li>
+          <li><strong>Sharing</strong> — If you choose to share an edited image, iOS handles that action via the system share sheet.</li>
+        </ul>
+      </section>
 
-  <h2>8. Your Choices</h2>
-  <ul>
-    <li>Revoke Photos access in iOS Settings → Privacy &amp; Security → Photos.</li>
-    <li>Delete the app to remove locally stored data.</li>
-  </ul>
+      <section id="purchases">
+        <h2>6. Purchases & Subscriptions</h2>
+        <p>The App offers optional subscriptions managed by Apple’s App Store. We do not receive your card or billing details. Available options:</p>
+        <ul>
+          <li><strong>Free tier:</strong> Edit up to 5 photos.</li>
+          <li><strong>Weekly:</strong> $3.99</li>
+          <li><strong>Monthly:</strong> $7.99</li>
+          <li><strong>Yearly:</strong> $29.99</li>
+        </ul>
+        <p>Apple may process limited information (e.g., purchase history, region) under its own terms. You can manage or cancel subscriptions in <em>Settings &gt; Apple ID &gt; Subscriptions</em>.</p>
+      </section>
 
-  <h2>9. Changes</h2>
-  <p>Policy updates will appear on this page with a new “Last updated” date.</p>
+      <section id="children">
+        <h2>7. Children’s Privacy</h2>
+        <p>The App is intended for a general audience and does not knowingly collect personal data from children under 13 (or the minimum age required by local law).</p>
+      </section>
 
-  <h2>10. Contact</h2>
-  <p>Email: <a href="mailto:nyoargames@gmail.com">nyoargames@gmail.com</a></p>
+      <section id="choices">
+        <h2>8. Your Choices & Controls</h2>
+        <ul>
+          <li>Revoke Photos access in iOS Settings at any time.</li>
+          <li>Delete the App to remove locally stored data associated with it.</li>
+          <li>If you email us, you control what information you share; we use it only to respond to your inquiry.</li>
+        </ul>
+      </section>
+
+      <section id="security">
+        <h2>9. Security</h2>
+        <p>Because processing occurs on-device, your content remains under your control. We do not operate servers that store your photos or edits.</p>
+      </section>
+
+      <section id="retention">
+        <h2>10. Retention</h2>
+        <p>We do not retain your images. If you contact us by email, we keep your message only as long as necessary to address your request and to comply with legal obligations.</p>
+      </section>
+
+      <section id="transfers">
+        <h2>11. International Transfers</h2>
+        <p>We do not transfer your photos internationally because we do not receive them. If you contact us and voluntarily share personal data, that correspondence may be processed in India.</p>
+      </section>
+
+      <section id="changes">
+        <h2>12. Changes to this Policy</h2>
+        <p>We may update this Policy from time to time. Changes will be posted here with an updated “Effective date.”</p>
+      </section>
+
+      <section id="contact">
+        <h2>13. Contact</h2>
+        <p>Questions or requests: <a href="mailto:nyoargames@gmail.com">nyoargames@gmail.com</a></p>
+      </section>
+
+      <section id="definitions">
+        <h2>14. Key Definitions</h2>
+        <p><strong>“Personal data”</strong> means information that identifies or can reasonably be linked to an individual.</p>
+      </section>
+
+      <section id="law">
+        <h2>15. Governing Law</h2>
+        <p>This Policy is governed by the laws of India, without regard to conflict-of-law rules.</p>
+      </section>
+
+      <footer>
+        © <span id="y"></span> Rohan Manocha · Apple, iOS, and iPhone are trademarks of Apple Inc. This page is for information only and does not constitute legal advice.
+      </footer>
+    </article>
+  </div>
+  <script>document.getElementById('y').textContent = new Date().getFullYear()</script>
 </body>
 </html>
+
