@@ -495,6 +495,17 @@
       .footer-links { justify-content: center; }
     }
   </style>
+  <script>
+    (function() {
+      var ua = navigator.userAgent || navigator.vendor || window.opera;
+      if (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) {
+        window.location.href = "https://apps.apple.com/app/id6764830222";
+      } else if (/android/i.test(ua)) {
+        window.location.href = "https://play.google.com/store/apps/details?id=com.nyoargames.peel.food.cosmetics.scanner";
+      }
+      // Desktop and unknown devices see the landing page normally
+    })();
+  </script>
 </head>
 <body>
 
