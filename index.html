@@ -1,56 +1,334 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>NyoarGames Apps Support</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>App Support | Rohan Manocha</title>
+  <meta name="description" content="Support for apps and games by Rohan Manocha on iPhone and iPad, including Book Tracker - Vitaliber, Peel - Ingredients scanner and Text Eraser for Photos. Contact support, privacy policies and terms of use.">
+  <link rel="canonical" href="https://nyoargames.github.io/NyoarGames-support/">
+  <meta name="theme-color" content="#f6f3ec" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#161513" media="(prefers-color-scheme: dark)">
+  <meta name="color-scheme" content="light dark">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2216%22%20fill%3D%22%231d1b18%22/%3E%3Ctext%20x%3D%2232%22%20y%3D%2244%22%20font-family%3D%22system-ui%2Csans-serif%22%20font-size%3D%2234%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%20fill%3D%22%23f6f3ec%22%3ER%3C/text%3E%3C/svg%3E">
   <style>
+    :root {
+      --bg: #f6f3ec;
+      --card: #ffffff;
+      --ink: #1d1b18;
+      --ink-soft: #5d574f;
+      --line: #e4ded3;
+      --dock: #ebe6dc;
+      --btn: #1d1b18;
+      --btn-ink: #f6f3ec;
+      --radius: 28px;
+      --wrap: 760px;
+      --head: ui-rounded, "SF Pro Rounded", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      --body: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #161513; --card: #211f1c; --ink: #f2eee6; --ink-soft: #b3aca1;
+        --line: #34312c; --dock: #26241f; --btn: #f2eee6; --btn-ink: #161513;
+      }
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
     body {
-      font-family: Arial, sans-serif;
-      padding: 2rem;
-      line-height: 1.6;
-      max-width: 800px;
-      margin: auto;
+      margin: 0; background: var(--bg); color: var(--ink);
+      font-family: var(--body); font-size: 1.0625rem; line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+      padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
     }
-    h1 {
-      color: #333;
+    img { display: block; max-width: 100%; height: auto; }
+    a { color: inherit; }
+    :focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; border-radius: 10px; }
+    .wrap { width: min(100% - 40px, var(--wrap)); margin-inline: auto; }
+    .visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+    /* Header */
+    .intro { padding: 56px 0 28px; }
+    .byline { margin: 0 0 6px; font-family: var(--head); font-weight: 600; color: var(--ink-soft); font-size: 1rem; }
+    h1 { margin: 0 0 14px; font-family: var(--head); font-weight: 800; font-size: clamp(2.5rem, 9vw, 3.6rem); line-height: 1; letter-spacing: -0.02em; }
+    .intro p.lede { margin: 0 0 22px; color: var(--ink-soft); max-width: 34ch; }
+
+    .email-row { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+    .email-chip {
+      display: inline-flex; align-items: center; gap: 8px; min-height: 44px;
+      padding: 8px 8px 8px 18px; border-radius: 999px; background: var(--card);
+      border: 1px solid var(--line); font-weight: 600;
     }
-    h2 {
-      margin-top: 2rem;
+    .email-chip a { text-decoration: none; }
+    .copy {
+      font: inherit; font-size: 0.85rem; font-weight: 600; cursor: pointer;
+      border: 0; border-radius: 999px; padding: 6px 14px; min-height: 32px;
+      background: var(--dock); color: var(--ink);
     }
-    code {
-      background: #f4f4f4;
-      padding: 2px 4px;
-      border-radius: 4px;
+    .copy:active { transform: translateY(1px); }
+
+    /* The dock: app picker styled like a home screen */
+    .picker { padding: 12px 0 8px; }
+    .dock { background: var(--dock); border-radius: 36px; padding: 22px 18px 10px; margin-bottom: 14px; }
+    .dock h2 { margin: 0 0 14px 6px; font-family: var(--head); font-size: 0.95rem; font-weight: 700; color: var(--ink-soft); letter-spacing: 0.01em; }
+    .tiles { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px 8px; }
+    .tile {
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+      text-decoration: none; padding: 6px 2px 12px; border-radius: 20px;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .tile img {
+      width: 64px; height: 64px; border-radius: 15px;
+      box-shadow: 0 1px 2px rgba(0,0,0,.08), 0 4px 12px rgba(0,0,0,.06);
+      transition: transform .18s ease;
+    }
+    .tile span { font-size: 0.78rem; font-weight: 600; line-height: 1.2; text-align: center; max-width: 11ch; }
+    .tile:hover img { transform: translateY(-2px); }
+    .tile:active img { transform: scale(.94); }
+
+    /* App sections */
+    .apps { padding: 18px 0 24px; display: grid; gap: 18px; }
+    .group-title { margin: 22px 0 0 4px; font-family: var(--head); font-size: 1.5rem; font-weight: 800; letter-spacing: -0.01em; }
+    .app {
+      background: var(--card); border-radius: var(--radius); border: 1px solid var(--line);
+      overflow: hidden; scroll-margin-top: 20px;
+    }
+    .app:target { box-shadow: 0 0 0 3px var(--accent); }
+    .app-head {
+      display: flex; align-items: center; gap: 16px; padding: 20px 22px;
+      background: var(--card);
+      background: color-mix(in srgb, var(--accent) 16%, var(--card));
+    }
+    .app-head img { width: 64px; height: 64px; border-radius: 15px; flex: none; box-shadow: 0 2px 8px rgba(0,0,0,.08); }
+    .app-head h2 { margin: 0; font-family: var(--head); font-size: 1.22rem; font-weight: 700; line-height: 1.2; letter-spacing: -0.01em; }
+    .app-head p { margin: 2px 0 0; color: var(--ink-soft); font-size: 0.95rem; }
+    .app-body { padding: 18px 22px 6px; }
+
+    .actions { display: grid; grid-template-columns: 1.35fr 1fr; gap: 10px; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; min-height: 46px;
+      padding: 10px 12px; border-radius: 999px; font-weight: 600; text-decoration: none; white-space: nowrap;
+      border: 1.5px solid var(--line); background: var(--card);
+    }
+    .btn.primary { background: var(--btn); color: var(--btn-ink); border-color: var(--btn); }
+    .btn:active { transform: translateY(1px); }
+
+    .faq { margin-top: 20px; }
+    .faq h3 { margin: 0 0 6px; font-family: var(--head); font-size: 1rem; font-weight: 700; }
+    details { border-top: 1px solid var(--line); }
+    details:last-child { border-bottom: 1px solid var(--line); }
+    summary {
+      cursor: pointer; list-style: none; padding: 14px 32px 14px 0; font-weight: 600; position: relative;
+    }
+    summary::-webkit-details-marker { display: none; }
+    summary::after {
+      content: ""; position: absolute; right: 6px; top: 50%; width: 9px; height: 9px;
+      border-right: 2px solid var(--ink-soft); border-bottom: 2px solid var(--ink-soft);
+      transform: translateY(-70%) rotate(45deg); transition: transform .2s ease;
+    }
+    details[open] summary::after { transform: translateY(-30%) rotate(-135deg); }
+    details p { margin: 0 0 16px; color: var(--ink-soft); }
+
+    .app-links { display: flex; flex-wrap: wrap; gap: 4px 20px; padding: 16px 0 6px; font-size: 0.95rem; }
+    .app-links a { color: var(--ink-soft); text-underline-offset: 3px; padding: 6px 0; }
+    .app-links a:hover { color: var(--ink); }
+    .to-top { display: block; padding: 10px 22px 16px; font-size: 0.85rem; color: var(--ink-soft); text-decoration: none; }
+    .to-top::before { content: "\2191\00a0"; }
+
+    footer { padding: 30px 0 48px; color: var(--ink-soft); font-size: 0.9rem; }
+    footer p { margin: 0 0 6px; }
+
+    @media (min-width: 720px) {
+      .intro { padding-top: 88px; }
+      .tiles { grid-template-columns: repeat(4, 1fr); }
+      .tile img { width: 76px; height: 76px; border-radius: 18px; }
+      .tile span { font-size: 0.85rem; }
+      .actions { grid-template-columns: auto auto; justify-content: start; }
+      .btn { padding: 10px 26px; }
+      .app-head { padding: 24px 28px; }
+      .app-head img { width: 76px; height: 76px; border-radius: 18px; }
+      .app-body { padding: 20px 28px 6px; }
+      .to-top { padding: 10px 28px 18px; }
     }
   </style>
 </head>
 <body>
+  <main>
+    <header class="intro wrap">
+      <p class="byline">Rohan Manocha</p>
+      <h1>App Support</h1>
+      <p class="lede">Help for my iPhone and iPad apps and games. Pick your app below, or email me directly.</p>
+      <div class="email-row">
+        <span class="email-chip">
+          <a href="mailto:nyoargames@gmail.com">nyoargames@gmail.com</a>
+          <button class="copy" type="button" data-copy="nyoargames@gmail.com" hidden>Copy</button>
+        </span>
+      </div>
+    </header>
 
-  <h1>NyoarGames Apps Support</h1>
+    <nav class="picker wrap" id="apps" aria-label="Choose an app">
+      <div class="dock">
+        <h2>Apps</h2>
+        <ul class="tiles"><li><a class="tile" href="#vitaliber"><img src="assets/support/icons/vitaliber.webp" width="192" height="192" alt=""><span>Vitaliber</span></a></li><li><a class="tile" href="#peel"><img src="assets/support/icons/peel.webp" width="192" height="192" alt=""><span>Peel</span></a></li><li><a class="tile" href="#text-eraser"><img src="assets/support/icons/text-eraser.webp" width="192" height="192" alt=""><span>Text Eraser</span></a></li></ul>
+      </div>
+      <div class="dock">
+        <h2>Games</h2>
+        <ul class="tiles"><li><a class="tile" href="#doge-playground"><img src="assets/support/icons/doge-playground.webp" width="192" height="192" alt=""><span>Doge Playground</span></a></li><li><a class="tile" href="#super-jenny-world"><img src="assets/support/icons/super-jenny-world.webp" width="192" height="192" alt=""><span>Super Jenny World</span></a></li><li><a class="tile" href="#ufo-vs-astronaut"><img src="assets/support/icons/ufo-vs-astronaut.webp" width="192" height="192" alt=""><span>UFO vs Astronaut</span></a></li><li><a class="tile" href="#animozo"><img src="assets/support/icons/animozo.webp" width="192" height="192" alt=""><span>Animozo</span></a></li></ul>
+      </div>
+    </nav>
 
-  <h2>Vitaliber Support</h2>
-  <p>Welcome to the support page for <strong>Book Tracker Vitaliber</strong>!</p>
+    <div class="apps wrap">
+      <h2 class="group-title">Apps</h2>
+      
+    <section class="app" id="vitaliber" style="--accent:#b89be6" aria-labelledby="vitaliber-name">
+      <header class="app-head">
+        <img src="assets/support/icons/vitaliber.webp" width="192" height="192" alt="">
+        <div>
+          <h2 id="vitaliber-name">Book Tracker - Vitaliber</h2>
+          <p>Bookshelves to BookTok, tracked</p>
+        </div>
+      </header>
+      <div class="app-body">
+        <div class="actions">
+          <a class="btn primary" href="mailto:nyoargames@gmail.com?subject=Book%20Tracker%20-%20Vitaliber%20support&amp;body=Hi%20Rohan%2C%0A%0A%5BDescribe%20what%20happened%20and%20what%20you%20expected%5D%0A%0AApp%20version%3A%20%0ADevice%20%28for%20example%20iPhone%2015%29%3A%20%0AiOS%20version%3A%20%0A">Email support</a>
+          <a class="btn" href="https://apps.apple.com/app/id6742686088">App Store</a>
+        </div>
+        <div class="faq"><h3>Common questions</h3><details><summary>How do I track my reading progress?</summary><p>Search for your book and open it. Scroll to the bottom of the book page and tap <strong>Track the book</strong> to open the book tracker.</p></details><details><summary>How do I export my data?</summary><p>Go to <strong>Profile &gt; Export Data</strong> to save your book data.</p></details></div>
+        <nav class="app-links" aria-label="Vitaliber links"><a href="https://nyoargames.github.io/NyoarGames-support/vitaliber-booktracker.html">Website</a><a href="https://nyoargames.github.io/NyoarGames-support/privacy-policy-vitaliber.html">Privacy policy</a><a href="https://nyoargames.github.io/NyoarGames-support/terms-of-use-vitaliber.html">Terms of use</a></nav>
+      </div>
+      <a class="to-top" href="#apps">All apps</a>
+    </section>
+    <section class="app" id="peel" style="--accent:#6f8f4a" aria-labelledby="peel-name">
+      <header class="app-head">
+        <img src="assets/support/icons/peel.webp" width="192" height="192" alt="">
+        <div>
+          <h2 id="peel-name">Peel - Ingredients scanner</h2>
+          <p>Food and cosmetics label scanner</p>
+        </div>
+      </header>
+      <div class="app-body">
+        <div class="actions">
+          <a class="btn primary" href="mailto:nyoargames@gmail.com?subject=Peel%20-%20Ingredients%20scanner%20support&amp;body=Hi%20Rohan%2C%0A%0A%5BDescribe%20what%20happened%20and%20what%20you%20expected%5D%0A%0AApp%20version%3A%20%0ADevice%20%28for%20example%20iPhone%2015%29%3A%20%0AiOS%20version%3A%20%0A">Email support</a>
+          <a class="btn" href="https://apps.apple.com/app/id6764830222">App Store</a>
+        </div>
+        
+        <nav class="app-links" aria-label="Peel links"><a href="https://nyoargames.github.io/NyoarGames-support/peel-ingredients-scanner.html">Website</a><a href="https://nyoargames.github.io/NyoarGames-support/privacy-policy-peel.html">Privacy policy</a><a href="https://nyoargames.github.io/NyoarGames-support/terms-of-use-peel.html">Terms of use</a></nav>
+      </div>
+      <a class="to-top" href="#apps">All apps</a>
+    </section>
+    <section class="app" id="text-eraser" style="--accent:#c49a3c" aria-labelledby="text-eraser-name">
+      <header class="app-head">
+        <img src="assets/support/icons/text-eraser.webp" width="192" height="192" alt="">
+        <div>
+          <h2 id="text-eraser-name">Text Eraser for Photos</h2>
+          <p>Erase text from photos, fast</p>
+        </div>
+      </header>
+      <div class="app-body">
+        <div class="actions">
+          <a class="btn primary" href="mailto:nyoargames@gmail.com?subject=Text%20Eraser%20for%20Photos%20support&amp;body=Hi%20Rohan%2C%0A%0A%5BDescribe%20what%20happened%20and%20what%20you%20expected%5D%0A%0AApp%20version%3A%20%0ADevice%20%28for%20example%20iPhone%2015%29%3A%20%0AiOS%20version%3A%20%0A">Email support</a>
+          <a class="btn" href="https://apps.apple.com/app/id6753676779">App Store</a>
+        </div>
+        
+        <nav class="app-links" aria-label="Text Eraser links"><a href="https://nyoargames.github.io/NyoarGames-support/privacy-policy.html">Privacy policy</a><a href="https://nyoargames.github.io/NyoarGames-support/terms-of-use.html">Terms of use</a></nav>
+      </div>
+      <a class="to-top" href="#apps">All apps</a>
+    </section>
+      <h2 class="group-title">Games</h2>
+      
+    <section class="app" id="doge-playground" style="--accent:#ef9a2e" aria-labelledby="doge-playground-name">
+      <header class="app-head">
+        <img src="assets/support/icons/doge-playground.webp" width="192" height="192" alt="">
+        <div>
+          <h2 id="doge-playground-name">Doge Playground: Draw to Save</h2>
+          <p>Creative drawing dog puzzle</p>
+        </div>
+      </header>
+      <div class="app-body">
+        <div class="actions">
+          <a class="btn primary" href="mailto:nyoargames@gmail.com?subject=Doge%20Playground%3A%20Draw%20to%20Save%20support&amp;body=Hi%20Rohan%2C%0A%0A%5BDescribe%20what%20happened%20and%20what%20you%20expected%5D%0A%0AApp%20version%3A%20%0ADevice%20%28for%20example%20iPhone%2015%29%3A%20%0AiOS%20version%3A%20%0A">Email support</a>
+          <a class="btn" href="https://apps.apple.com/app/id6744534275">App Store</a>
+        </div>
+        
+        <nav class="app-links" aria-label="Doge Playground links"><a href="https://doc-hosting.flycricket.io/nyoargames-privacy-policy/8c86fadb-4f82-4874-bbd2-c4e65f79ddda/privacy">Privacy policy</a></nav>
+      </div>
+      <a class="to-top" href="#apps">All apps</a>
+    </section>
+    <section class="app" id="super-jenny-world" style="--accent:#2fa7dc" aria-labelledby="super-jenny-world-name">
+      <header class="app-head">
+        <img src="assets/support/icons/super-jenny-world.webp" width="192" height="192" alt="">
+        <div>
+          <h2 id="super-jenny-world-name">Super Jenny World: jungle jump</h2>
+          <p>Run, jump and smash enemies</p>
+        </div>
+      </header>
+      <div class="app-body">
+        <div class="actions">
+          <a class="btn primary" href="mailto:nyoargames@gmail.com?subject=Super%20Jenny%20World%3A%20jungle%20jump%20support&amp;body=Hi%20Rohan%2C%0A%0A%5BDescribe%20what%20happened%20and%20what%20you%20expected%5D%0A%0AApp%20version%3A%20%0ADevice%20%28for%20example%20iPhone%2015%29%3A%20%0AiOS%20version%3A%20%0A">Email support</a>
+          <a class="btn" href="https://apps.apple.com/app/id6744400372">App Store</a>
+        </div>
+        
+        <nav class="app-links" aria-label="Super Jenny World links"><a href="https://doc-hosting.flycricket.io/nyoargames-privacy-policy/8c86fadb-4f82-4874-bbd2-c4e65f79ddda/privacy">Privacy policy</a></nav>
+      </div>
+      <a class="to-top" href="#apps">All apps</a>
+    </section>
+    <section class="app" id="ufo-vs-astronaut" style="--accent:#5358c9" aria-labelledby="ufo-vs-astronaut-name">
+      <header class="app-head">
+        <img src="assets/support/icons/ufo-vs-astronaut.webp" width="192" height="192" alt="">
+        <div>
+          <h2 id="ufo-vs-astronaut-name">UFO vs Astronaut</h2>
+          <p>Alien attack rescue game</p>
+        </div>
+      </header>
+      <div class="app-body">
+        <div class="actions">
+          <a class="btn primary" href="mailto:nyoargames@gmail.com?subject=UFO%20vs%20Astronaut%20support&amp;body=Hi%20Rohan%2C%0A%0A%5BDescribe%20what%20happened%20and%20what%20you%20expected%5D%0A%0AApp%20version%3A%20%0ADevice%20%28for%20example%20iPhone%2015%29%3A%20%0AiOS%20version%3A%20%0A">Email support</a>
+          <a class="btn" href="https://apps.apple.com/app/id6744399924">App Store</a>
+        </div>
+        
+        <nav class="app-links" aria-label="UFO vs Astronaut links"><a href="https://doc-hosting.flycricket.io/nyoargames-privacy-policy/8c86fadb-4f82-4874-bbd2-c4e65f79ddda/privacy">Privacy policy</a></nav>
+      </div>
+      <a class="to-top" href="#apps">All apps</a>
+    </section>
+    <section class="app" id="animozo" style="--accent:#e0522c" aria-labelledby="animozo-name">
+      <header class="app-head">
+        <img src="assets/support/icons/animozo.webp" width="192" height="192" alt="">
+        <div>
+          <h2 id="animozo-name">Animozo Carnivore vs Herbivore</h2>
+          <p>Turn-based animal strategy</p>
+        </div>
+      </header>
+      <div class="app-body">
+        <div class="actions">
+          <a class="btn primary" href="mailto:nyoargames@gmail.com?subject=Animozo%20Carnivore%20vs%20Herbivore%20support&amp;body=Hi%20Rohan%2C%0A%0A%5BDescribe%20what%20happened%20and%20what%20you%20expected%5D%0A%0AApp%20version%3A%20%0ADevice%20%28for%20example%20iPhone%2015%29%3A%20%0AiOS%20version%3A%20%0A">Email support</a>
+          <a class="btn" href="https://apps.apple.com/app/id6743960023">App Store</a>
+        </div>
+        
+        <nav class="app-links" aria-label="Animozo links"><a href="https://doc-hosting.flycricket.io/nyoargames-privacy-policy/8c86fadb-4f82-4874-bbd2-c4e65f79ddda/privacy">Privacy policy</a></nav>
+      </div>
+      <a class="to-top" href="#apps">All apps</a>
+    </section>
+    </div>
+  </main>
 
-  <h2>📩 Contact</h2>
-  <p>If you need help, you can open an issue on this repository or email us at <a href="mailto:nyoargames@gmail.com">nyoargames@gmail.com</a>.</p>
+  <footer class="wrap">
+    <p>Need help with something else? Email <a href="mailto:nyoargames@gmail.com">nyoargames@gmail.com</a>.</p>
+    <p>&copy; 2026 Rohan Manocha. Apple, iPhone and iPad are trademarks of Apple Inc.</p>
+  </footer>
 
-  <h2>💡 Frequently Asked Questions (FAQ)</h2>
-
-  <p><strong>Q: How do I track my reading progress?</strong><br />
-  A: Open the app, search for your book, select the book, on the book page scroll to the bottom, select the "Track the book" button to navigate to the book tracker page.</p>
-
-  <p><strong>Q: How do I export my data?</strong><br />
-  A: Go to <em>Profile > Export Data</em> to save your book data.</p>
-
-  <p><em>More FAQs coming soon!</em></p>
-
-  <h2>📚 Legal</h2>
-<ul>
-  <li><a href="privacy-policy.html">Privacy Policy</a></li>
-  <li><a href="terms-of-use.html">Terms of Use</a></li>
-</ul>
-
-
+  <script>
+    // Copy email button (shown only when the Clipboard API is available)
+    (function () {
+      var btn = document.querySelector(".copy");
+      if (!btn || !navigator.clipboard) return;
+      btn.hidden = false;
+      btn.addEventListener("click", function () {
+        navigator.clipboard.writeText(btn.getAttribute("data-copy")).then(function () {
+          btn.textContent = "Copied";
+          setTimeout(function () { btn.textContent = "Copy"; }, 1800);
+        });
+      });
+    })();
+  </script>
 </body>
 </html>
